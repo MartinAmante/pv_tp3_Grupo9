@@ -1,16 +1,21 @@
-# React + Vite
+# Gestión de Proyectos Educativos - React Parte 1 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción del Proyecto
+Este proyecto representa una introducción al desarrollo de aplicaciones web utilizando React y Vite. Consiste en la migración de la plataforma de "Gestión de Proyectos Educativos" desde una estructura original en HTML/CSS hacia una arquitectura moderna basada en componentes.
 
-Currently, two official plugins are available:
+El sistema integra un diseño dividido en componentes reutilizables (Header, Nav, Footer, Lista de Proyectos) con un módulo de servicio independiente de lógica pura que gestiona el arreglo de datos. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Mediante la implementación del hook `useState`, la interfaz de la aplicación permite:
+* Visualizar una lista dinámica de proyectos.
+* Eliminar proyectos de la lista, actualizando el estado y la pantalla de forma inmediata.
+* Buscar proyectos en tiempo real utilizando un campo de texto.
 
-## React Compiler
+*(En esta primera etapa, el estado de la navegación principal se mantiene inactivo)*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Integrantes del Grupo 9
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Amante, Martin Javier - GitHub: MartinAmante
+* Fernando Galian - GitHub: Fer2603
+* Tomas Vilte - GitHub: tengrok
+* Mauricio Gutierrez  - GitHub: maury1999
+* Matias Llampa  - GitHub: MatiasASL
