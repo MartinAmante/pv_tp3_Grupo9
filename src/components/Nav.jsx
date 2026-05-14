@@ -1,3 +1,5 @@
+import "../assets/css/nav.css";
+
 function Nav() {
     return (
         <nav className="navbar">

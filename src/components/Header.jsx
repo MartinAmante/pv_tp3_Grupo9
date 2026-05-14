@@ -2,7 +2,7 @@ export const Header = () => {
     return (
     <div className="comp header">
         <header className= "header">
-        <title>Index</title>
+        <title>Grup 9</title>
         <link rel="#"href="#" rel="#"/>
         <link href="#" rel="#"/>
         </header>
