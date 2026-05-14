@@ -1,0 +1,10 @@
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #c0c0c0;
+}
