@@ -1,0 +1,28 @@
+body{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+    margin: 0%;
+    background-color: #e0e0e0;
+    transition: background-color 0.2s ease;
+}
+
+#btn_cambioDeColor{
+   padding: 15px 32px;
+   font-size: 18px;
+   font-weight: bold;
+   color: rgb(0, 0, 0);
+   background-color: #e3e636;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+   transition: transform 0.1s ease, background-color 0.2s ease;
+}
+#btn_cambioDeColor:hover {
+   background-color: #b89b3b;
+}
+#btn_cambioDeColor:active {
+   transform: scale(0.95);
+}

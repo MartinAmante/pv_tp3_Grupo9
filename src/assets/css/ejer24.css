@@ -1,0 +1,56 @@
+:root{
+    background-color:rgb(149, 227, 201) ;
+}
+body {
+    background-color: #7a4504;
+    font-family: 'Times New Roman', Times, serif;
+    color:#c7f0c1;
+    margin: 30px 30px ;
+}
+
+h1 {
+background-color: #075309;
+padding: 30px ;
+font-size:40px ;
+text-align: center;
+}
+
+.pregunta {
+    margin:  20px ;
+    font-size: 25px;
+}
+
+#mostrar{
+    padding: 30px 0px ;
+      margin: 20px;
+}
+
+
+input[type=radio] + label{
+    padding: 2px 10px;
+    margin: 1px;
+    background-color: #703507;
+    border:1px solid rgb(183, 138, 70) ;
+}    
+/*lo que se clikea es el label
+    por eso el "[type=radio] + label" es una sola cosa
+    ([type=radio] + label) selecciona todos los imput tipo radio
+     que tengan un label despues y solo despues
+*/
+
+input[type=radio]{/*solo quita los circulitos de radio/ si va en el [type=radio]+label borra todo*/
+    display: none;
+}
+
+input[type=radio]:checked + label{/*cuando el boton es clikeado*/
+    background-image: none;
+    background-color: #530303;
+}
+
+li{/*acomoda las los botones*/
+    list-style-type: none;
+    float: inline-start ;
+}
+.info-box{
+    font-size:20px ;
+}
