@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import { obtenerProyectos, eliminarProyecto, buscarProyecto } from '../services/proyectoService';
+import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/proyectoService';
 
-const ListaProyectos = () => {
-    const [proyectos, setProyectos] = useState(obtenerProyectos());
+const ListaProyectos = ({ proyectosState, setProyectos }) => {
 
     const handleEliminar = (id) => {
         eliminarProyecto(id);
@@ -16,32 +14,32 @@ const ListaProyectos = () => {
 
     return (
         <div className="container mt-4">
-            <h2 className="mb-4">Listado de Proyectos</h2>
+            <h2 className="mb-4 text-center">Listado de Proyectos</h2>
 
             <div className="mb-4">
                 <input 
                     type="text" 
-                    className="form-control" 
-                    placeholder="Buscar por título..." 
+                    className="form-control form-control-lg" 
+                    placeholder="Filtrar proyectos..." 
                     onChange={handleBuscar} 
                 />
             </div>
 
             <div className="row">
-                {proyectos.map((proyecto) => (
+                {proyectosState.map((proyecto) => (
                     <div className="col-md-4 mb-3" key={proyecto.id}>
-                        <div className="card shadow-sm h-100">
+                        <div className="card shadow-sm h-100 border-light">
                             <div className="card-body">
-                                <h5 className="card-title">{proyecto.titulo}</h5>
+                                <h5 className="card-title text-primary fw-bold">{proyecto.titulo}</h5>
                                 <p className="card-text">
                                     <strong>Categoría:</strong> {proyecto.categoria} <br />
-                                    <strong>Estado:</strong> {proyecto.estado}
+                                    <strong>Estado:</strong> <span className="badge bg-info text-dark">{proyecto.estado}</span>
                                 </p>
                                 <button 
-                                    className="btn btn-danger"
+                                    className="btn btn-outline-danger btn-sm w-100"
                                     onClick={() => handleEliminar(proyecto.id)}
                                 >
-                                    Eliminar
+                                    Eliminar Proyecto
                                 </button>
                             </div>
                         </div>
@@ -49,8 +47,8 @@ const ListaProyectos = () => {
                 ))}
             </div>
             
-            {proyectos.length === 0 && (
-                <div className="alert alert-warning mt-3">No se encontraron proyectos.</div>
+            {proyectosState.length === 0 && (
+                <div className="alert alert-warning mt-3 text-center">No se encontraron proyectos que coincidan.</div>
             )}
         </div>
     );
