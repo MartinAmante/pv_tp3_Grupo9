@@ -1,20 +1,25 @@
+import { useState } from 'react';
+import { obtenerProyectos } from './services/proyectoService';
 import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import FormularioProyecto from './components/FormularioProyecto';
 import ListaProyectos from './components/ListaProyectos';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Nav />
-      
-      <main className="container mt-4">
-        <h1 className="text-center mb-4">Gestión de Proyectos Educativos</h1>
-        <ListaProyectos />  
-      </main>
+  const [proyectos, setProyectos] = useState(obtenerProyectos());
 
+  return (
+    <div className="App d-flex flex-column min-vh-100">
+      <Nav />
+      <main className="container my-5 flex-grow-1">
+        {/* AQUÍ ESTÁ EL AGREGAR QUE TE FALTA */}
+        <FormularioProyecto setProyectos={setProyectos} />
+        
+        <hr className="my-5" />
+        
+        <ListaProyectos proyectosState={proyectos} setProyectos={setProyectos} />
+      </main>
       <Footer />
     </div>
   );
