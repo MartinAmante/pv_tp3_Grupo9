@@ -1,4 +1,5 @@
 import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/proyectoService';
+import ProyectoCard from './ProyectoCard';
 
 const ListaProyectos = ({ proyectosState, setProyectos }) => {
 
@@ -27,23 +28,10 @@ const ListaProyectos = ({ proyectosState, setProyectos }) => {
 
             <div className="row">
                 {proyectosState.map((proyecto) => (
-                    <div className="col-md-4 mb-3" key={proyecto.id}>
-                        <div className="card shadow-sm h-100 border-light">
-                            <div className="card-body">
-                                <h5 className="card-title text-primary fw-bold">{proyecto.titulo}</h5>
-                                <p className="card-text">
-                                    <strong>Categoría:</strong> {proyecto.categoria} <br />
-                                    <strong>Estado:</strong> <span className="badge bg-info text-dark">{proyecto.estado}</span>
-                                </p>
-                                <button 
-                                    className="btn btn-outline-danger btn-sm w-100"
-                                    onClick={() => handleEliminar(proyecto.id)}
-                                >
-                                    Eliminar Proyecto
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <ProyectoCard 
+                    key={proyecto.id} 
+                    proyecto={proyecto} 
+                    eliminarProyecto={handleEliminar} />
                 ))}
             </div>
             
