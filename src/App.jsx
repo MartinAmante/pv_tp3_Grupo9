@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { obtenerProyectos } from './services/proyectoService';
 import Nav from './components/Nav';
+import Header from './components/Header';
 import FormularioProyecto from './components/FormularioProyecto';
 import ListaProyectos from './components/ListaProyectos';
 import Footer from './components/Footer';
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <div className="App d-flex flex-column min-vh-100">
+      <Header />
       <Nav />
       <main className="container my-5 flex-grow-1">
         {/* AQUÍ ESTÁ EL AGREGAR QUE TE FALTA */}
