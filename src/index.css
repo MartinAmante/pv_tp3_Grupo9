@@ -28,6 +28,9 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+  body {
+  margin: 0;
+}
 }
 
 @media (prefers-color-scheme: dark) {
@@ -109,3 +112,4 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
