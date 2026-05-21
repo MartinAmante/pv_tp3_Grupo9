@@ -6,6 +6,8 @@
 body {
   background-color: var(--bg-body);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #000000, #1230c7);
+  min-height: 100vh;
 }
 
 header {
@@ -22,7 +24,8 @@ footer {
   border: none !important;
   border-top: 5px solid var(--primary-color) !important;
   border-radius: 12px;
-  background: white;
+  background: linear-gradient(to bottom, black, #2c5a89);
+  
 }
 
 .form-control:focus {
@@ -43,6 +46,7 @@ footer {
 
 .card-title {
   font-size: 1.25rem;
+  color:var(--bg-body);
   letter-spacing: -0.5px;
   margin-bottom: 1rem;
 }
@@ -74,5 +78,5 @@ footer {
 
 hr {
   opacity: 0.1;
-  border-top: 2px solid #000;
+  border-top: 2px solid #0b0303;
 }
