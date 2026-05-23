@@ -1,12 +1,14 @@
 
 .navbar {
-  background-color: #333; 
-  padding: 15px;
+  background-color: #333;
   display: flex;
-  gap: 20px; 
+  justify-content: space-around;
+  margin: auto;
 }
 
 .navbar li {
   color: white; 
-  text-decoration: none; 
+  list-style-type:none;  
+  padding: 15px 15px;
+
 }
