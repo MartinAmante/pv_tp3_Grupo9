@@ -1,7 +1,7 @@
 import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 
-const ListaProyectos = ({ proyectosState, setProyectos }) => {
+const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle }) => {
 
     const handleEliminar = (id) => {
         eliminarProyecto(id);
@@ -29,9 +29,11 @@ const ListaProyectos = ({ proyectosState, setProyectos }) => {
             <div className="row">
                 {proyectosState.map((proyecto) => (
                     <ProyectoCard 
-                    key={proyecto.id} 
-                    proyecto={proyecto} 
-                    eliminarProyecto={handleEliminar} />
+                        key={proyecto.id} 
+                        proyecto={proyecto} 
+                        eliminarProyecto={handleEliminar} 
+                        onVerDetalle={onVerDetalle} 
+                    />
                 ))}
             </div>
             
