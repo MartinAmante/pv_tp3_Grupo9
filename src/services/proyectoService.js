@@ -87,7 +87,6 @@ export const eliminarProyecto = (id) => {
     if(proyecto) {
         proyecto.disponibilidad = false;
     }
-    //proyectos = proyectos.filter(p => p.id !== id);
 };
 
 export const obtenerProyectoPorDisponible = () => {

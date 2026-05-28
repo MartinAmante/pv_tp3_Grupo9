@@ -1,7 +1,7 @@
 
 import { eliminarProyecto, obtenerProyectos, buscarProyecto, obtenerProyectoPorDisponible  } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setActividadReal}) => {

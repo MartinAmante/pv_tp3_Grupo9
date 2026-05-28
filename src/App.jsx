@@ -35,13 +35,13 @@ function App() {
 
   const handleAgregarProyecto = (nuevoProyecto) => {
     agregarProyecto(nuevoProyecto);
-    setProyectos(obtenerProyectos());
+    setProyectos(obtenerProyectoPorDisponible());
     setActividadReal(prev => prev + 1);
   };
 
   const handleEliminarProyecto = (id) => {
     eliminarProyecto(id);
-    setProyectos(obtenerProyectos());
+    setProyectos(obtenerProyectoPorDisponible());
     setActividadReal(prev => prev + 1);
   };
 
