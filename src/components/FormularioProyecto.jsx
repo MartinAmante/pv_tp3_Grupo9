@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { agregarProyecto, obtenerProyectos } from '../services/proyectoService';
 
-const FormularioProyecto = ({ setProyectos }) => {
+const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
     const [titulo, setTitulo] = useState('');
     const [categoria, setCategoria] = useState('');
     const [estado, setEstado] = useState('');
@@ -49,6 +49,7 @@ const FormularioProyecto = ({ setProyectos }) => {
 
         agregarProyecto(nuevo);
         setProyectos(obtenerProyectos());
+        setActividadReal(prev => prev + 1);
 
         // Limpiamos todos los estados
         setTitulo('');

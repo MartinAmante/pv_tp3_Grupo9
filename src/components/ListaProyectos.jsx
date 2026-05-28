@@ -1,11 +1,12 @@
 import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 
-const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle }) => {
+const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle,  setActividadReal }) => {
 
     const handleEliminar = (id) => {
         eliminarProyecto(id);
         setProyectos(obtenerProyectos());
+        setActividadReal(prev => prev + 1);
     };
 
     const handleBuscar = (e) => {
