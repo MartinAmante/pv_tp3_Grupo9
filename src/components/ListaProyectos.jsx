@@ -2,13 +2,12 @@ import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/
 import ProyectoCard from './ProyectoCard';
 import { useState, useEffect } from 'react';
 
-const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle }) => {
-    /*funciones que vienen de proyecto service*/
+const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle,  setActividadReal }) => {
 
     const handleEliminar = (id) => {
         eliminarProyecto(id);
         setProyectos(obtenerProyectos());
-        setContador(contador + 1);
+        setActividadReal(prev => prev + 1);
     };
 
     const handleBuscar = (e) => {
