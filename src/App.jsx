@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { obtenerProyectos, obtenerProyectoPorDisponible } from './services/proyectoService';
+import { obtenerProyectos, agregarProyecto, eliminarProyecto, obtenerProyectoPorDisponible } from './services/proyectoService';
 import Nav from './components/Nav';
 import Header from './components/Header';
 import FormularioProyecto from './components/FormularioProyecto';
@@ -9,34 +9,41 @@ import Footer from './components/Footer';
 import './App.css';
 import RegistroActividad from './components/RegistroActividad';
 
-
 function App() {
   const [proyectos, setProyectos] = useState(obtenerProyectoPorDisponible());
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
-  const [ultimaActividad, setUltimaActividad] =useState("");
+  const [ultimaActividad, setUltimaActividad] = useState("");
   const primeraCarga = useRef(true);
   const [actividadReal, setActividadReal] = useState(0);
 
   useEffect(() => {
+    if (primeraCarga.current) {
+      primeraCarga.current = false;
+      return;
+    }
 
-  if (primeraCarga.current) {
-    primeraCarga.current = false;
-    return;
-  }
+    const fechaActual = new Date();
+    const fecha = fechaActual.toLocaleDateString();
+    const hora = fechaActual.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
 
-  const fechaActual = new Date();
+    setUltimaActividad(`${fecha} a las ${hora} hs.`);
+  }, [actividadReal]);
 
-  const fecha = fechaActual.toLocaleDateString();
+  const handleAgregarProyecto = (nuevoProyecto) => {
+    agregarProyecto(nuevoProyecto);
+    setProyectos(obtenerProyectos());
+    setActividadReal(prev => prev + 1);
+  };
 
-  const hora = fechaActual.toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  });
-
-  setUltimaActividad(`${fecha} a las ${hora} hs.`);
-
-}, [actividadReal]);
+  const handleEliminarProyecto = (id) => {
+    eliminarProyecto(id);
+    setProyectos(obtenerProyectos());
+    setActividadReal(prev => prev + 1);
+  };
 
   return (
     <div className="App d-flex flex-column min-vh-100">
@@ -44,7 +51,7 @@ function App() {
       <Nav />
       <main className="container my-5 flex-grow-1">
         
-        <FormularioProyecto setProyectos={setProyectos} setActividadReal={setActividadReal} />
+        <FormularioProyecto onAgregarProyecto={handleAgregarProyecto} />
         
         <hr className="my-5" />
         
@@ -52,9 +59,8 @@ function App() {
           <div className="col-lg-8">
             <ListaProyectos 
               proyectosState={proyectos} 
-              setProyectos={setProyectos}  
+              onEliminarProyecto={handleEliminarProyecto}  
               onVerDetalle={setProyectoSeleccionado}
-              setActividadReal={setActividadReal}
             />
 
             <RegistroActividad fecha={ultimaActividad} />
