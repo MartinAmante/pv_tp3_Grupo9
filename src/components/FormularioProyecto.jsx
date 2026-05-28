@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { agregarProyecto, obtenerProyectos } from '../services/proyectoService';
 
 const FormularioProyecto = ({ setProyectos }) => {
@@ -21,13 +21,13 @@ const FormularioProyecto = ({ setProyectos }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Juntamos los recursos en un array filtrando los que queden vacíos
+        // recursos en un array filtrando los que queden vacíos
         const listaRecursos = [];
         if (recursoPdf) listaRecursos.push(`pdf: ${recursoPdf}`);
         if (recursoDrive) listaRecursos.push(`drive: ${recursoDrive}`);
         if (recursoGithub) listaRecursos.push(`github: ${recursoGithub}`);
 
-        // Juntamos los integrantes en un array de objetos
+        // integrantes en un array de objetos
         const listaEquipo = [];
         if (nombre1) {
             listaEquipo.push({ nombre: nombre1, rol: rol1 || 'Desarrollador' });
@@ -42,7 +42,7 @@ const FormularioProyecto = ({ setProyectos }) => {
             categoria,
             estado,
             descripcion: descripcion || 'Sin descripción disponible.',
-            descripcion2: '', // Queda vacío ya que usan una sola descripción
+            descripcion2: '', 
             recursos: listaRecursos,
             equipo: listaEquipo
         };
@@ -50,7 +50,7 @@ const FormularioProyecto = ({ setProyectos }) => {
         agregarProyecto(nuevo);
         setProyectos(obtenerProyectos());
 
-        // Limpiamos todos los estados
+        
         setTitulo('');
         setCategoria('');
         setEstado('');
@@ -63,6 +63,11 @@ const FormularioProyecto = ({ setProyectos }) => {
         setNombre2('');
         setRol2('');
     };
+   const[contador, setContador] = useState(0);
+
+    useEffect(() => {
+        console.log('Se creo un proyecto a las: ', new Date());
+    }, [contador]);
 
     return (
         <div className="card shadow-sm mb-5 p-4 border-primary">
@@ -130,3 +135,25 @@ const FormularioProyecto = ({ setProyectos }) => {
 };
 
 export default FormularioProyecto;
+
+/*<div className="col-md-5">
+                    <input 
+                        type="text" 
+                        name="equipo" 
+                        className="form-control" 
+                        placeholder="Equipo" 
+                        value={equipo} 
+                        onChange={(e) => setDatos({...datos,  ...equipo,nombre: e.target.value})} 
+                        required />
+                </div>  
+                <div className="col-md-5">
+                    <input 
+                        type="text" 
+                        name="rol" 
+                        className="form-control" 
+                        placeholder="Rol" 
+                        value={rol} 
+                        onChange={(e) => setDatos({...datos, ...equipo, rol: e.target.value})} 
+                        required />
+                </div> 
+               */

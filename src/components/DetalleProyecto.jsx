@@ -18,6 +18,7 @@ const DetalleProyecto = ({ proyecto }) => {
 
     return (
         <div>
+            <br/>
             <h2>{titulo}</h2>
             <p><strong>Categoría:</strong> {categoria}</p>
             <p><strong>Estado:</strong> {estado}</p>
@@ -25,15 +26,15 @@ const DetalleProyecto = ({ proyecto }) => {
             <h4>Descripción</h4>
             <p>{descripcion}</p>
             <p>{descripcion2}</p>
-            <hr />
+            <hr /> 
             <h4>Recursos</h4>
-            <ul>
+           <ul>
                 {recursos.map((recurso, index) => (
                     <li key={index}>{recurso}</li>
                 ))}
             </ul>
             <hr />
-            <h4>Equipo</h4>
+           <h4>Equipo</h4>
             <ul>
                 {equipo.map(({ nombre, rol }, index) => (
                     <li key={index}>
