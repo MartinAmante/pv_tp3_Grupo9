@@ -1,17 +1,25 @@
 import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
+import { useState, useEffect } from 'react';
 
 const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle }) => {
+    /*funciones que vienen de proyecto service*/
 
     const handleEliminar = (id) => {
         eliminarProyecto(id);
         setProyectos(obtenerProyectos());
+        setContador(contador + 1);
     };
 
     const handleBuscar = (e) => {
         const resultados = buscarProyecto(e.target.value);
         setProyectos(resultados);
     };
+    const[contador, setContador] = useState(0);
+
+        useEffect(() => {
+            console.log('Se elimino un proyecto a las: ', new Date());
+        }, [contador]);
 
     return (
         <div className="container mt-4">

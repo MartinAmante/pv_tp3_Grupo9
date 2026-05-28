@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 
 .navbar {
   background-color: #333;
@@ -12,11 +12,11 @@
   list-style-type:none;  
   padding: 15px 15px;
 
-=======
+=======*/
 nav {
-    background-color:transparent;
+    background-color:transparent;   
     padding: 40px;
-}
+};
 
 nav a,
 nav a:visited {
@@ -25,16 +25,15 @@ nav a:visited {
     font-optical-sizing: auto;
     font-weight: 600;
     color: #0c22ed;
-    margin: 0 20px;
-}
+   margin: 0 20px;
+};
 
 nav a:hover {
     color: white;
     text-decoration: underline;
     text-underline-offset: 7px;
-}
+};
 
 nav a:active {
     color: #0f12cb;
->>>>>>> 97c644aea97a589357e35338b244875ab4cd025d
-}
+};
