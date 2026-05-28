@@ -15,6 +15,9 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
     const [nombre2, setNombre2] = useState('');
     const [rol2, setRol2] = useState('');
 
+    const[contador, setContador] = useState(0);
+    const [disponibilidad, setDisponibilidad] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -36,6 +39,7 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
             titulo,
             categoria,
             estado,
+            disponibilidad,
             descripcion: descripcion || 'Sin descripción disponible.',
             descripcion2: '', 
             recursos: listaRecursos,
@@ -47,6 +51,7 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
         setTitulo('');
         setCategoria('');
         setEstado('');
+        setDisponibilidad(false);
         setDescripcion('');
         setRecursoPdf('');
         setRecursoGithub('');
@@ -55,7 +60,15 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
         setRol1('');
         setNombre2('');
         setRol2('');
+
+        setContador(prev => prev + 1);
     };
+  
+
+    useEffect(() => {
+        if (contador === 0) return; // Evitar log en la primera carga
+        console.log('Se creo un proyecto a las: ', new Date());
+    }, [contador]);
 
     return (
         <div className="card shadow-sm mb-5 p-4 border-primary">
@@ -76,6 +89,13 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
                     <textarea className="form-control" placeholder="Descripción del proyecto" rows="3" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required></textarea>
                 </div>
 
+                <div className="col-12">
+                    <input className="form-check-input" type="checkbox" id="checkDisponibilidad" checked={disponibilidad} onChange={(e) => setDisponibilidad(e.target.checked)} />
+                    <label className="form-check-label" htmlFor="checkDisponibilidad"> Disponible</label>
+                </div>
+                
+
+                {/* Sección Recursos Digitales */}
                 <div className="col-12 mt-4">
                     <h5 className="text-secondary border-bottom pb-2">Recursos Digitales</h5>
                 </div>

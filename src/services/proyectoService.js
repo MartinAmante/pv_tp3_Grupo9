@@ -5,6 +5,7 @@ let proyectos = [
         descripcion2: "Permite controlar el stock y organizar la información comercial.", 
         categoria: "Comercio", 
         estado: "Pendiente",
+        disponibilidad: true,
         recursos: ["PDF", "Drive", "GitHub"],
         equipo: [
             { nombre: "Matias", rol: "Frontend" },
@@ -18,6 +19,7 @@ let proyectos = [
         descripcion2: "Incluye temperatura, humedad y pronóstico semanal.", 
         categoria: "Tecnología", 
         estado: "En Proceso",
+        disponibilidad: true,
         recursos: ["PDF", "Drive", "GitHub"],
         equipo: [
             { nombre: "Fernando", rol: "Diseño UI" },
@@ -31,6 +33,7 @@ let proyectos = [
         descripcion2: "Facilita la búsqueda y control de material educativo.", 
         categoria: "Educación", 
         estado: "Finalizado",
+        disponibilidad: true,
         recursos: ["PDF", "Drive", "GitHub"],
         equipo: [
             { nombre: "Matias", rol: "Frontend" },
@@ -44,6 +47,7 @@ let proyectos = [
         descripcion2: "Permite visualizar estadísticas y optimizar el uso de energía.",
         categoria: "Tecnología", 
         estado: "Pendiente",
+        disponibilidad: true,
         recursos: ["PDF", "Drive", "GitHub"],
         equipo: [
             { nombre: "Martin", rol: "Backend" },
@@ -57,6 +61,7 @@ let proyectos = [
         descripcion2: "Brinda información sobre separación y reutilización de residuos.",
         categoria: "Ambiente", 
         estado: "En Proceso",
+        disponibilidad: true,
         recursos: ["PDF", "Drive", "GitHub"], 
         equipo: [
             { nombre: "Tomas", rol: "Frontend" },
@@ -64,6 +69,8 @@ let proyectos = [
         ]
     }
 ];
+
+
 
 export const obtenerProyectos = () => {
     return [...proyectos];
@@ -74,7 +81,17 @@ export const agregarProyecto = (nuevo) => {
 };
 
 export const eliminarProyecto = (id) => {
-    proyectos = proyectos.filter(p => p.id !== id);
+    const proyecto = proyectos.find(
+        proyecto => proyecto.id === id
+    );  
+    if(proyecto) {
+        proyecto.disponibilidad = false;
+    }
+    //proyectos = proyectos.filter(p => p.id !== id);
+};
+
+export const obtenerProyectoPorDisponible = () => {
+    return obtenerProyectos().filter(proyecto => proyecto.disponibilidad === true);
 };
 
 export const buscarProyecto = (termino) => {

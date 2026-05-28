@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { obtenerProyectos, agregarProyecto, eliminarProyecto } from './services/proyectoService';
+import { obtenerProyectos, agregarProyecto, eliminarProyecto, obtenerProyectoPorDisponible } from './services/proyectoService';
 import Nav from './components/Nav';
 import Header from './components/Header';
 import FormularioProyecto from './components/FormularioProyecto';
@@ -10,7 +10,7 @@ import './App.css';
 import RegistroActividad from './components/RegistroActividad';
 
 function App() {
-  const [proyectos, setProyectos] = useState(obtenerProyectos());
+  const [proyectos, setProyectos] = useState(obtenerProyectoPorDisponible());
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
   const [ultimaActividad, setUltimaActividad] = useState("");
   const primeraCarga = useRef(true);

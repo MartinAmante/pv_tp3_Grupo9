@@ -1,19 +1,27 @@
-import { buscarProyecto } from '../services/proyectoService';
+
+import { eliminarProyecto, obtenerProyectos, buscarProyecto, obtenerProyectoPorDisponible  } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 import { useState } from 'react';
 
-const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle }) => {
+
+const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setActividadReal}) => {
     const [busqueda, setBusqueda] = useState('');
+    const[contador, setContador] = useState(0);
 
     const handleBuscar = (e) => {
         setBusqueda(e.target.value);
     };
-
-    // Filtramos localmente para renderizar sin mutar el estado global de App.jsx
-    // Esto garantiza el aislamiento total del filtro de búsqueda exigido por el profesor
+  
     const proyectosFiltrados = busqueda.trim() === '' 
         ? proyectosState 
         : buscarProyecto(busqueda);
+  
+  
+  useEffect(() => {
+            if (contador === 0) return; // Evitar log en la primera carga
+            console.log('Se elimino un proyecto a las: ', new Date());
+        }, [contador]);
+
 
     return (
         <div className="container mt-4">
