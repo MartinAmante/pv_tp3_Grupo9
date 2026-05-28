@@ -4,19 +4,24 @@ import { useState, useEffect } from 'react';
 
 const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle,  setActividadReal }) => {
 
+
+    const[contador, setContador] = useState(0);
+    
     const handleEliminar = (id) => {
         eliminarProyecto(id);
         setProyectos(obtenerProyectos());
         setActividadReal(prev => prev + 1);
+        setContador(prev => prev + 1);
     };
 
     const handleBuscar = (e) => {
         const resultados = buscarProyecto(e.target.value);
         setProyectos(resultados);
     };
-    const[contador, setContador] = useState(0);
+    
 
         useEffect(() => {
+            if (contador === 0) return; // Evitar log en la primera carga
             console.log('Se elimino un proyecto a las: ', new Date());
         }, [contador]);
 

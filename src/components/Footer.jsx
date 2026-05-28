@@ -1,7 +1,7 @@
 
 const Footer=()=>{
     return(
-    <footer class="pie">
+    <footer className="pie">
         &copy; 2026 Plataforma de gestion de proyectos. Todos los derechos reservados.
     </footer>
     );

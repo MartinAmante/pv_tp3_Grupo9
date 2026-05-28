@@ -18,6 +18,8 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
     const [nombre2, setNombre2] = useState('');
     const [rol2, setRol2] = useState('');
 
+     const[contador, setContador] = useState(0);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -63,10 +65,13 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
         setRol1('');
         setNombre2('');
         setRol2('');
+
+        setContador(prev => prev + 1);
     };
-   const[contador, setContador] = useState(0);
+  
 
     useEffect(() => {
+        if (contador === 0) return; // Evitar log en la primera carga
         console.log('Se creo un proyecto a las: ', new Date());
     }, [contador]);
 
