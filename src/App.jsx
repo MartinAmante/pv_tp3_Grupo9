@@ -15,6 +15,8 @@ function App() {
   const [ultimaActividad, setUltimaActividad] = useState("");
   const primeraCarga = useRef(true);
   const [actividadReal, setActividadReal] = useState(0);
+  const [actividadEliminar, setActividadEliminar] = useState(0);
+  const [actividadAgregar, setActividadAgregar] = useState(0);
 
   useEffect(() => {
     if (primeraCarga.current) {
@@ -37,12 +39,14 @@ function App() {
     agregarProyecto(nuevoProyecto);
     setProyectos(obtenerProyectoPorDisponible());
     setActividadReal(prev => prev + 1);
+    setActividadAgregar(prev => prev + 1);
   };
 
   const handleEliminarProyecto = (id) => {
     eliminarProyecto(id);
     setProyectos(obtenerProyectoPorDisponible());
     setActividadReal(prev => prev + 1);
+    setActividadEliminar(prev => prev + 1);
   };
 
   return (
@@ -61,6 +65,8 @@ function App() {
               proyectosState={proyectos} 
               onEliminarProyecto={handleEliminarProyecto}  
               onVerDetalle={setProyectoSeleccionado}
+              actividadEliminar={actividadEliminar}
+              actividadAgregar={actividadAgregar}
             />
 
             <RegistroActividad fecha={ultimaActividad} />

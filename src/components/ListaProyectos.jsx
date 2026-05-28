@@ -4,7 +4,7 @@ import ProyectoCard from './ProyectoCard';
 import { useState, useEffect } from 'react';
 
 
-const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setActividadReal}) => {
+const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setActividadReal, actividadAgregar, actividadEliminar }) => {
     const [busqueda, setBusqueda] = useState('');
     const[contador, setContador] = useState(0);
 
@@ -18,10 +18,14 @@ const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setA
   
   
   useEffect(() => {
-            if (contador === 0) return; // Evitar log en la primera carga
-            console.log('Se elimino un proyecto a las: ', new Date());
-        }, [contador]);
+            if (actividadEliminar === 0) return; // Evitar log en la primera carga
+            console.log('Se elimino un proyecto: ', new Date());
+        }, [actividadEliminar]);
 
+ useEffect(() => {
+        if (actividadAgregar === 0) return; // Evitar log en la primera carga
+        console.log('Se creo un proyecto: ', new Date());
+    }, [actividadAgregar]);
 
     return (
         <div className="container mt-4">
