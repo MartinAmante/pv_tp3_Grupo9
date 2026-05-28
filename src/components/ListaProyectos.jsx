@@ -1,4 +1,4 @@
-import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/proyectoService';
+import { eliminarProyecto, obtenerProyectos, buscarProyecto, obtenerProyectoPorDisponible  } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 import { useState, useEffect } from 'react';
 
@@ -9,7 +9,7 @@ const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle,  setActivi
     
     const handleEliminar = (id) => {
         eliminarProyecto(id);
-        setProyectos(obtenerProyectos());
+        setProyectos(obtenerProyectoPorDisponible());
         setActividadReal(prev => prev + 1);
         setContador(prev => prev + 1);
     };
