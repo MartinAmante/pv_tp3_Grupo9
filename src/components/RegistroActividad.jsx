@@ -1,7 +1,9 @@
 const RegistroActividad = ({ fecha }) => {
+    if (!fecha) return null;
+
     return (
-        <div>
-            <p>Última actualización de la lista: {fecha}</p>
+        <div className="alert alert-info mt-4 text-center fw-bold shadow-sm">
+            ⏳ Última actualización de la lista: {fecha}
         </div>
     );
 };

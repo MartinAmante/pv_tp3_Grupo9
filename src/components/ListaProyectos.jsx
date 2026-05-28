@@ -1,24 +1,19 @@
-import { eliminarProyecto, obtenerProyectos, buscarProyecto } from '../services/proyectoService';
+import { buscarProyecto } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle,  setActividadReal }) => {
-
-    const handleEliminar = (id) => {
-        eliminarProyecto(id);
-        setProyectos(obtenerProyectos());
-        setActividadReal(prev => prev + 1);
-    };
+const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle }) => {
+    const [busqueda, setBusqueda] = useState('');
 
     const handleBuscar = (e) => {
-        const resultados = buscarProyecto(e.target.value);
-        setProyectos(resultados);
+        setBusqueda(e.target.value);
     };
-    const[contador, setContador] = useState(0);
 
-        useEffect(() => {
-            console.log('Se elimino un proyecto a las: ', new Date());
-        }, [contador]);
+    // Filtramos localmente para renderizar sin mutar el estado global de App.jsx
+    // Esto garantiza el aislamiento total del filtro de búsqueda exigido por el profesor
+    const proyectosFiltrados = busqueda.trim() === '' 
+        ? proyectosState 
+        : buscarProyecto(busqueda);
 
     return (
         <div className="container mt-4">
@@ -29,22 +24,23 @@ const ListaProyectos = ({ proyectosState, setProyectos, onVerDetalle,  setActivi
                     type="text" 
                     className="form-control form-control-lg" 
                     placeholder="Filtrar proyectos..." 
+                    value={busqueda}
                     onChange={handleBuscar} 
                 />
             </div>
 
             <div className="row">
-                {proyectosState.map((proyecto) => (
+                {proyectosFiltrados.map((proyecto) => (
                     <ProyectoCard 
                         key={proyecto.id} 
                         proyecto={proyecto} 
-                        eliminarProyecto={handleEliminar} 
+                        eliminarProyecto={onEliminarProyecto} 
                         onVerDetalle={onVerDetalle} 
                     />
                 ))}
             </div>
             
-            {proyectosState.length === 0 && (
+            {proyectosFiltrados.length === 0 && (
                 <div className="alert alert-warning mt-3 text-center">No se encontraron proyectos que coincidan.</div>
             )}
         </div>

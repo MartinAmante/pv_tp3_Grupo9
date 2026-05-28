@@ -1,18 +1,15 @@
-import { useState,useEffect } from 'react';
-import { agregarProyecto, obtenerProyectos } from '../services/proyectoService';
+import { useState } from 'react';
 
-const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
+const FormularioProyecto = ({ onAgregarProyecto }) => {
     const [titulo, setTitulo] = useState('');
     const [categoria, setCategoria] = useState('');
     const [estado, setEstado] = useState('');
     const [descripcion, setDescripcion] = useState('');
     
-    // 3 campos independientes para Recursos Digitales
     const [recursoPdf, setRecursoPdf] = useState('');
     const [recursoGithub, setRecursoGithub] = useState('');
     const [recursoDrive, setRecursoDrive] = useState('');
 
-    // Campos fijos para 2 integrantes del equipo
     const [nombre1, setNombre1] = useState('');
     const [rol1, setRol1] = useState('');
     const [nombre2, setNombre2] = useState('');
@@ -21,13 +18,11 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // recursos en un array filtrando los que queden vacíos
         const listaRecursos = [];
         if (recursoPdf) listaRecursos.push(`pdf: ${recursoPdf}`);
         if (recursoDrive) listaRecursos.push(`drive: ${recursoDrive}`);
         if (recursoGithub) listaRecursos.push(`github: ${recursoGithub}`);
 
-        // integrantes en un array de objetos
         const listaEquipo = [];
         if (nombre1) {
             listaEquipo.push({ nombre: nombre1, rol: rol1 || 'Desarrollador' });
@@ -47,10 +42,7 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
             equipo: listaEquipo
         };
 
-        agregarProyecto(nuevo);
-        setProyectos(obtenerProyectos());
-        setActividadReal(prev => prev + 1);
-
+        onAgregarProyecto(nuevo);
         
         setTitulo('');
         setCategoria('');
@@ -64,18 +56,12 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
         setNombre2('');
         setRol2('');
     };
-   const[contador, setContador] = useState(0);
-
-    useEffect(() => {
-        console.log('Se creo un proyecto a las: ', new Date());
-    }, [contador]);
 
     return (
         <div className="card shadow-sm mb-5 p-4 border-primary">
             <h3 className="text-primary mb-4 text-center">Registrar Nuevo Proyecto</h3>
             <form onSubmit={handleSubmit} className="row g-3">
                 
-                {/* Datos Básicos */}
                 <div className="col-md-4">
                     <input type="text" className="form-control" placeholder="Nombre del proyecto" value={titulo} onChange={(e) => setTitulo(e.target.value)} required />
                 </div>
@@ -86,12 +72,10 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
                     <input type="text" className="form-control" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)} required />
                 </div>
 
-                {/* Una sola Descripción */}
                 <div className="col-12">
                     <textarea className="form-control" placeholder="Descripción del proyecto" rows="3" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required></textarea>
                 </div>
 
-                {/* Sección Recursos Digitales */}
                 <div className="col-12 mt-4">
                     <h5 className="text-secondary border-bottom pb-2">Recursos Digitales</h5>
                 </div>
@@ -105,12 +89,10 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
                     <input type="text" className="form-control" placeholder="github: https://github.com/..." value={recursoGithub} onChange={(e) => setRecursoGithub(e.target.value)} />
                 </div>
 
-                {/* Sección Equipo del Proyecto */}
                 <div className="col-12 mt-4">
                     <h5 className="text-secondary border-bottom pb-2">Equipo del Proyecto</h5>
                 </div>
                 
-                {/* Integrante 1 */}
                 <div className="col-md-6">
                     <input type="text" className="form-control" placeholder="Nombre Integrante 1" value={nombre1} onChange={(e) => setNombre1(e.target.value)} required />
                 </div>
@@ -118,7 +100,6 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
                     <input type="text" className="form-control" placeholder="Rol en el equipo (Integrante 1)" value={rol1} onChange={(e) => setRol1(e.target.value)} required />
                 </div>
 
-                {/* Integrante 2 */}
                 <div className="col-md-6">
                     <input type="text" className="form-control" placeholder="Nombre Integrante 2" value={nombre2} onChange={(e) => setNombre2(e.target.value)} />
                 </div>
@@ -126,7 +107,6 @@ const FormularioProyecto = ({ setProyectos,  setActividadReal }) => {
                     <input type="text" className="form-control" placeholder="Rol en el equipo (Integrante 2)" value={rol2} onChange={(e) => setRol2(e.target.value)} />
                 </div>
 
-                {/* Botón de envío */}
                 <div className="col-12 text-end mt-4">
                     <button type="submit" className="btn btn-success px-5 fw-bold">Agregar Proyecto</button>
                 </div>
