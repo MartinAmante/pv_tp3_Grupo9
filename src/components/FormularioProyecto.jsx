@@ -130,25 +130,3 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
 };
 
 export default FormularioProyecto;
-
-/*<div className="col-md-5">
-                    <input 
-                        type="text" 
-                        name="equipo" 
-                        className="form-control" 
-                        placeholder="Equipo" 
-                        value={equipo} 
-                        onChange={(e) => setDatos({...datos,  ...equipo,nombre: e.target.value})} 
-                        required />
-                </div>  
-                <div className="col-md-5">
-                    <input 
-                        type="text" 
-                        name="rol" 
-                        className="form-control" 
-                        placeholder="Rol" 
-                        value={rol} 
-                        onChange={(e) => setDatos({...datos, ...equipo, rol: e.target.value})} 
-                        required />
-                </div> 
-               */

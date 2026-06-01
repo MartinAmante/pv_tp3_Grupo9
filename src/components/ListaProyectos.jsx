@@ -29,7 +29,8 @@ const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setA
 
     return (
         <div className="container mt-4">
-            <h2 className="mb-4 text-center">Listado de Proyectos</h2>
+            <h2 className="mb-4 text-center">Listado de Pr
+                oyectos</h2>
 
             <div className="mb-4">
                 <input 
