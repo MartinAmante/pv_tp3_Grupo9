@@ -11,10 +11,10 @@ const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setA
     const handleBuscar = (e) => {
         setBusqueda(e.target.value);
     };
-  
-    const proyectosFiltrados = busqueda.trim() === '' 
-        ? proyectosState 
-        : buscarProyecto(busqueda);
+                                       /*es lo mismo que un if*/   
+    const proyectosFiltrados = busqueda.trim() === ''  /*trim elimina los espacios en blanco de la cadena que reciba */
+        ? proyectosState /*SI busqueda='' pasalee esto*/                             /*busqueda = Hola Papu => holapapu*/
+        : buscarProyecto(busqueda); /*SINO pasale busqueda a la funcion*/
   
   
   useEffect(() => {

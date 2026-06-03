@@ -28,14 +28,14 @@ const DetalleProyecto = ({ proyecto }) => {
             <p>{descripcion2}</p>
             <hr /> 
             <h4>Recursos</h4>
-           <ul>
-                {recursos.map((recurso, index) => (
+           <ul>{/*index=indice  key=nombre de li "debe ser unico"*/}
+                {recursos.map((recurso, index) => ( 
                     <li key={index}>{recurso}</li>
                 ))}
             </ul>
             <hr />
            <h4>Equipo</h4>
-            <ul>
+            <ul>{/*Recorré el array equipo, sacá nombre y rol de cada objeto y mostralos en una lista.”*/}
                 {equipo.map(({ nombre, rol }, index) => (
                     <li key={index}>
                         {nombre} - {rol}

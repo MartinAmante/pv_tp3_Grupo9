@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 
 const FormularioProyecto = ({ onAgregarProyecto }) => {
-    const [titulo, setTitulo] = useState('');
+    const [titulo, setTitulo] = useState('');  
     const [categoria, setCategoria] = useState('');
     const [estado, setEstado] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -18,9 +18,10 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
     const [disponibilidad, setDisponibilidad] = useState(false);
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); {/*no renderices todavia*/}
 
         const listaRecursos = [];
+        {/*se ingreso algo en el campo recursos? */}
         if (recursoPdf) listaRecursos.push(`pdf: ${recursoPdf}`);
         if (recursoDrive) listaRecursos.push(`drive: ${recursoDrive}`);
         if (recursoGithub) listaRecursos.push(`github: ${recursoGithub}`);
@@ -33,7 +34,7 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
             listaEquipo.push({ nombre: nombre2, rol: rol2 || 'Desarrollador' });
         }
 
-        const nuevo = {
+        const nuevo = { //variables de los useState
             id: Date.now(),
             titulo,
             categoria,
@@ -67,7 +68,7 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
     return (
         <div className="card shadow-sm mb-5 p-4 border-primary">
             <h3 className="text-primary mb-4 text-center">Registrar Nuevo Proyecto</h3>
-            <form onSubmit={handleSubmit} className="row g-3">
+            <form onSubmit={handleSubmit} className="row g-3"> {/*cuando el formulario es enviado ejecutas handleSubmit */}
                 
                 <div className="col-md-4">
                     <input type="text" className="form-control" placeholder="Nombre del proyecto" value={titulo} onChange={(e) => setTitulo(e.target.value)} required />
@@ -79,9 +80,9 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
                     <input type="text" className="form-control" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)} required />
                 </div>
 
-                <div className="col-12">
+                <div className="col-12">                                                                {/*value=lo que se encuentre en el cuadro de texto */}
                     <textarea className="form-control" placeholder="Descripción del proyecto" rows="3" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required></textarea>
-                </div>
+                </div>                                                                                                    {/*cuando el formulario cambie pasacelo a la afuncion anclada*/}
 
                 <div className="col-12">
                     <input className="form-check-input" type="checkbox" id="checkDisponibilidad" checked={disponibilidad} onChange={(e) => setDisponibilidad(e.target.checked)} />

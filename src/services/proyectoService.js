@@ -73,14 +73,14 @@ let proyectos = [
 
 
 export const obtenerProyectos = () => {
-    return [...proyectos];
+    return [...proyectos];//spread poerator para retornar una copia del array proyectos, evitando mutaciones externas
 };
 
 export const agregarProyecto = (nuevo) => {
     proyectos = [...proyectos, nuevo];
 };
 
-export const eliminarProyecto = (id) => {
+export const eliminarProyecto = (id) => { //buscas el proyecto y pones su disponibilidad en false
     const proyecto = proyectos.find(
         proyecto => proyecto.id === id
     );  
@@ -90,10 +90,10 @@ export const eliminarProyecto = (id) => {
 };
 
 export const obtenerProyectoPorDisponible = () => {
-    return obtenerProyectos().filter(proyecto => proyecto.disponibilidad === true);
-};
+    return obtenerProyectos().filter(proyecto => proyecto.disponibilidad === true);// "funcion flecha"
+};// llama a obtenerProyectos y los filtra segun su disponibilidad, retornando solo los proyectos disponibles
 
 export const buscarProyecto = (termino) => {
     const texto = termino.toLowerCase();
-    return proyectos.filter(p => p.titulo.toLowerCase().includes(texto));
+    return proyectos.filter(p => p.titulo.toLowerCase().includes(texto)); // .includes pregunta si el titulo contiene lo que tiene texto
 };    
