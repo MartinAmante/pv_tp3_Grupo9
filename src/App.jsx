@@ -22,11 +22,8 @@ function App() {
   const [actividadAgregar, setActividadAgregar] = useState(0);
 
   const ProyectoDetalleWrapper = () => {
-
     const { id } = useParams();
-
     const proyecto = obtenerProyectosPorId(Number(id));
-
     return <DetalleProyecto proyecto={proyecto} />;
   };
 
@@ -66,53 +63,28 @@ function App() {
       <Header />
       <Nav />
       <main className="container my-5 flex-grow-1">
-
         <Routes>
-
-          <Route
-            path="/"
-            element={<Dashboard />}
-          />
-
-          <Route
-            path="/dashboard"
-            element={<Dashboard />}
-          />
-
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/proyectos"
             element={
               <>
-                <FormularioProyecto
-                  onAgregarProyecto={handleAgregarProyecto}
-                />
-
+                <FormularioProyecto onAgregarProyecto={handleAgregarProyecto} />
                 <hr className="my-5" />
-
                 <ListaProyectos
                   proyectosState={proyectos}
                   onEliminarProyecto={handleEliminarProyecto}
                   actividadEliminar={actividadEliminar}
                   actividadAgregar={actividadAgregar}
                 />
-
                 <RegistroActividad fecha={ultimaActividad} />
               </>
             }
           />
-
-          <Route
-            path="/proyectos/:id"
-            element={<ProyectoDetalleWrapper />}
-          />
-
-          <Route
-            path="/perfil"
-            element={<PerfilUsuario />}
-          />
-
+          <Route path="/proyectos/:id" element={<ProyectoDetalleWrapper />} />
+          <Route path="/perfil" element={<PerfilUsuario />} />
         </Routes>
-
       </main>
       <Footer />
     </div>
