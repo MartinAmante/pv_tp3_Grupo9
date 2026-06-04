@@ -1,21 +1,26 @@
 import { useState, useEffect, useRef } from 'react';
-import { obtenerProyectos, agregarProyecto, eliminarProyecto, obtenerProyectoPorDisponible } from './services/proyectoService';
+import { 
+  obtenerProyectos, 
+  agregarProyecto, 
+  eliminarProyecto, 
+  obtenerProyectoPorDisponible, 
+  obtenerProyectosPorId 
+} from './services/proyectoService';
+
 import Nav from './components/Nav';
 import Header from './components/Header';
-
 import FormularioProyecto from './components/FormularioProyecto';
 import ListaProyectos from './components/ListaProyectos';
 import DetalleProyecto from './components/DetalleProyecto';
-
 import Footer from './components/Footer';
-import './App.css';
 import RegistroActividad from './components/RegistroActividad';
 import { Routes, Route, useParams } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import PerfilUsuario from './components/PerfilUsuario';
+import './App.css';
 
 function App() {
-  const [proyectos, setProyectos] = useState(obtenerProyectoPorDisponible());
+  const [proyectos, setProyectos] = useState(() => obtenerProyectoPorDisponible());
   const [ultimaActividad, setUltimaActividad] = useState("");
   const primeraCarga = useRef(true);
   const [actividadReal, setActividadReal] = useState(0);
@@ -23,12 +28,8 @@ function App() {
   const [actividadAgregar, setActividadAgregar] = useState(0);
 
   const ProyectoDetalleWrapper = () => {
-
     const { id } = useParams();
-
-    const proyecto = proyectos.find(
-      p => p.id === Number(id)
-    );
+    const proyecto = obtenerProyectosPorId(Number(id));
     return <DetalleProyecto proyecto={proyecto} />;
   };
 
@@ -70,7 +71,6 @@ function App() {
       <main className="container my-5 flex-grow-1">
 
         <Routes>
-
           <Route
             path="/"
             element={<Dashboard />}
@@ -112,7 +112,6 @@ function App() {
             path="/perfil"
             element={<PerfilUsuario />}
           />
-
         </Routes>
 
       </main>
