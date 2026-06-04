@@ -1,10 +1,10 @@
 
-import { eliminarProyecto, obtenerProyectos, buscarProyecto, obtenerProyectoPorDisponible  } from '../services/proyectoService';
+import { buscarProyecto } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 import { useState, useEffect } from 'react';
 
 
-const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setActividadReal, actividadAgregar, actividadEliminar }) => {
+const ListaProyectos = ({ proyectosState, onEliminarProyecto, setActividadReal, actividadAgregar, actividadEliminar }) => {
     const [busqueda, setBusqueda] = useState('');
     const[contador, setContador] = useState(0);
 
@@ -47,8 +47,7 @@ const ListaProyectos = ({ proyectosState, onEliminarProyecto, onVerDetalle, setA
                     <ProyectoCard 
                         key={proyecto.id} 
                         proyecto={proyecto} 
-                        eliminarProyecto={onEliminarProyecto} 
-                        onVerDetalle={onVerDetalle} 
+                        eliminarProyecto={onEliminarProyecto}  
                     />
                 ))}
             </div>

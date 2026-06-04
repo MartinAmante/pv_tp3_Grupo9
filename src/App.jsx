@@ -10,15 +10,27 @@ import DetalleProyecto from './components/DetalleProyecto';
 import Footer from './components/Footer';
 import './App.css';
 import RegistroActividad from './components/RegistroActividad';
+import { Routes, Route, useParams } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import PerfilUsuario from './components/PerfilUsuario';
 
 function App() {
   const [proyectos, setProyectos] = useState(obtenerProyectoPorDisponible());
-  const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
   const [ultimaActividad, setUltimaActividad] = useState("");
   const primeraCarga = useRef(true);
   const [actividadReal, setActividadReal] = useState(0);
   const [actividadEliminar, setActividadEliminar] = useState(0);
   const [actividadAgregar, setActividadAgregar] = useState(0);
+
+  const ProyectoDetalleWrapper = () => {
+
+    const { id } = useParams();
+
+    const proyecto = proyectos.find(
+      p => p.id === Number(id)
+    );
+    return <DetalleProyecto proyecto={proyecto} />;
+  };
 
   useEffect(() => {
     if (primeraCarga.current) {
@@ -56,29 +68,52 @@ function App() {
       <Header />
       <Nav />
       <main className="container my-5 flex-grow-1">
-        
-        <FormularioProyecto onAgregarProyecto={handleAgregarProyecto} /> {/*onAgregarProyecto funcion del componente funcional*/ }
-                                              {/*recibe una funcion como prop*/ }
-        <hr className="my-5" />
-        
-        <div className="row">
-          <div className="col-lg-8">
-            <ListaProyectos 
-              proyectosState={proyectos} 
-              onEliminarProyecto={handleEliminarProyecto}  
-              onVerDetalle={setProyectoSeleccionado}
-              actividadEliminar={actividadEliminar}
-              actividadAgregar={actividadAgregar}
-            />
 
-            <RegistroActividad fecha={ultimaActividad} />
-          </div>
-          <div className="col-lg-4">
-            <div className="position-sticky" style={{ top: '20px' }}>
-              <DetalleProyecto proyecto={proyectoSeleccionado} />
-            </div>
-          </div>
-        </div>
+        <Routes>
+
+          <Route
+            path="/"
+            element={<Dashboard />}
+          />
+
+          <Route
+            path="/dashboard"
+            element={<Dashboard />}
+          />
+
+          <Route
+            path="/proyectos"
+            element={
+              <>
+                <FormularioProyecto
+                  onAgregarProyecto={handleAgregarProyecto}
+                />
+
+                <hr className="my-5" />
+
+                <ListaProyectos
+                  proyectosState={proyectos}
+                  onEliminarProyecto={handleEliminarProyecto}
+                  actividadEliminar={actividadEliminar}
+                  actividadAgregar={actividadAgregar}
+                />
+
+                <RegistroActividad fecha={ultimaActividad} />
+              </>
+            }
+          />
+
+          <Route
+            path="/proyectos/:id"
+            element={<ProyectoDetalleWrapper />}
+          />
+
+          <Route
+            path="/perfil"
+            element={<PerfilUsuario />}
+          />
+
+        </Routes>
 
       </main>
       <Footer />

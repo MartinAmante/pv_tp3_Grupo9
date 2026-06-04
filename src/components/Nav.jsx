@@ -1,25 +1,29 @@
-import { BrowserRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import "../assets/css/nav.css";
 
 function Nav() {
     return (    
-        <BrowserRouter>
         <nav className="navbar">
             <ul>
-                <li><Link to="/">Inicio</Link></li>
-                <li><Link to="/proyectos">Proyectos</Link></li>
-                <li><Link to="/detalle">Detalle</Link></li>
-                <li><Link to="/perfil">Perfil</Link></li>
+                <li>
+                    <NavLink to="/">Inicio</NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/proyectos">Proyectos</NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/perfil">Perfil</NavLink>
+                </li>
             </ul>
         </nav>
-        </BrowserRouter>
     );
 }
 
 export default Nav;
 /*
-    ✅ Refactorización del Menú (<Nav />)
+    Refactorización del Menú (<Nav />)
 
     “Reemplazar todas las etiquetas tradicionales <a> por <Link> o <NavLink>”
 */
