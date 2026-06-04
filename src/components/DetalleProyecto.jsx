@@ -1,9 +1,13 @@
-const DetalleProyecto = ({ proyecto }) => {
+import { useParams } from "react-router-dom";
+import { obtenerProyectosPorId } from "../services/proyectoService";
+
+const DetalleProyecto = () => {
+    const {id} = useParams();
+
+    const proyecto = obtenerProyectosPorId(Number(id));
 
     if (!proyecto) {
-        return (
-            <div>Seleccione un proyecto para ver el detalle</div>
-        );
+        return <div>Proyecto no encontrado</div>;
     }
 
     const {
@@ -18,7 +22,6 @@ const DetalleProyecto = ({ proyecto }) => {
 
     return (
         <div>
-            <br/>
             <h2>{titulo}</h2>
             <p><strong>Categoría:</strong> {categoria}</p>
             <p><strong>Estado:</strong> {estado}</p>
@@ -28,17 +31,17 @@ const DetalleProyecto = ({ proyecto }) => {
             <p>{descripcion2}</p>
             <hr /> 
             <h4>Recursos</h4>
-           <ul>
-                {recursos.map((recurso, index) => (
-                    <li key={index}>{recurso}</li>
+            <ul>
+                {recursos.map((r, i) => (
+                    <li key={i}>{r}</li>
                 ))}
             </ul>
             <hr />
-           <h4>Equipo</h4>
+            <h4>Equipo</h4>
             <ul>
-                {equipo.map(({ nombre, rol }, index) => (
-                    <li key={index}>
-                        {nombre} - {rol}
+                {equipo.map(( e, i) => (
+                    <li key={i}>
+                        {e.nombre} - {e.rol}
                     </li>
                 ))}
             </ul>
