@@ -1,4 +1,7 @@
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
+import  Form  from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Card from "react-bootstrap/Card";
 
 const FormularioProyecto = ({ onAgregarProyecto }) => {
     const [titulo, setTitulo] = useState('');  
@@ -61,47 +64,49 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
         setNombre2('');
         setRol2('');
     };
-  
 
-   
 
     return (
-        <div className="card shadow-sm mb-5 p-4 border-primary">
-            <h3 className="text-primary mb-4 text-center">Registrar Nuevo Proyecto</h3>
-            <form onSubmit={handleSubmit} className="row g-3"> {/*cuando el formulario es enviado ejecutas handleSubmit */}
+        <Card className="shadow-sm mb-5 border-primary">
+            <Card.Body className='p-4'>
+                <h3 className="text-primary mb-4 text-center">Registrar Nuevo Proyecto</h3>
+            <Form onSubmit={handleSubmit} className="row g-3">
                 
                 <div className="col-md-4">
-                    <input type="text" className="form-control" placeholder="Nombre del proyecto" value={titulo} onChange={(e) => setTitulo(e.target.value)} required />
+                    <Form.Control placeholder="Nombre del proyecto" value={titulo} onChange={(e) => setTitulo(e.target.value)} required />
                 </div>
                 <div className="col-md-4">
-                    <input type="text" className="form-control" placeholder="Categoría" value={categoria} onChange={(e) => setCategoria(e.target.value)} required />
+                    <Form.Control placeholder="Categoría" value={categoria} onChange={(e) => setCategoria(e.target.value)} required />
                 </div>
                 <div className="col-md-4">
-                    <input type="text" className="form-control" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)} required />
+                    <Form.Control placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)} required />
                 </div>
-
-                <div className="col-12">                                                                {/*value=lo que se encuentre en el cuadro de texto */}
-                    <textarea className="form-control" placeholder="Descripción del proyecto" rows="3" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required></textarea>
-                </div>                                                                                                    {/*cuando el formulario cambie pasacelo a la afuncion anclada*/}
 
                 <div className="col-12">
-                    <input className="form-check-input" type="checkbox" id="checkDisponibilidad" checked={disponibilidad} onChange={(e) => setDisponibilidad(e.target.checked)} />
-                    <label className="form-check-label" htmlFor="checkDisponibilidad"> Disponible</label>
+                    <Form.Control as="textarea" rows={3} placeholder="Descripción del proyecto" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required />
                 </div>
                 
+                <div className="col-12">
+                <Form.Check
+                    type="checkbox"
+                    label= "Disponible"
+                    checked={disponibilidad}
+                    onChange={(e) => setDisponibilidad(e.target.checked)}
+                />
+                </div>
 
                 {/* Sección Recursos Digitales */}
                 <div className="col-12 mt-4">
                     <h5 className="text-secondary border-bottom pb-2">Recursos Digitales</h5>
                 </div>
                 <div className="col-md-4">
-                    <input type="text" className="form-control" placeholder="pdf: https://ejemplo.com/tareas.pdf" value={recursoPdf} onChange={(e) => setRecursoPdf(e.target.value)} />
+                    <Form.Control placeholder="pdf: https://ejemplo.com/tareas.pdf" value={recursoPdf} onChange={(e) => setRecursoPdf(e.target.value)} />
                 </div>
                 <div className="col-md-4">
-                    <input type="text" className="form-control" placeholder="drive: https://drive.google.com/..." value={recursoDrive} onChange={(e) => setRecursoDrive(e.target.value)} />
+                    <Form.Control placeholder="drive: https://drive.google.com/..." value={recursoDrive} onChange={(e) => setRecursoDrive(e.target.value)} />
                 </div>
                 <div className="col-md-4">
-                    <input type="text" className="form-control" placeholder="github: https://github.com/..." value={recursoGithub} onChange={(e) => setRecursoGithub(e.target.value)} />
+                    <Form.Control placeholder="github: https://github.com/..." value={recursoGithub} onChange={(e) => setRecursoGithub(e.target.value)} />
                 </div>
 
                 <div className="col-12 mt-4">
@@ -109,25 +114,29 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
                 </div>
                 
                 <div className="col-md-6">
-                    <input type="text" className="form-control" placeholder="Nombre Integrante 1" value={nombre1} onChange={(e) => setNombre1(e.target.value)} required />
+                    <Form.Control placeholder="Nombre Integrante 1" value={nombre1} onChange={(e) => setNombre1(e.target.value)} required />
                 </div>
                 <div className="col-md-6">
-                    <input type="text" className="form-control" placeholder="Rol en el equipo (Integrante 1)" value={rol1} onChange={(e) => setRol1(e.target.value)} required />
+                    <Form.Control placeholder="Rol en el equipo (Integrante 1)" value={rol1} onChange={(e) => setRol1(e.target.value)} required />
                 </div>
 
                 <div className="col-md-6">
-                    <input type="text" className="form-control" placeholder="Nombre Integrante 2" value={nombre2} onChange={(e) => setNombre2(e.target.value)} />
+                    <Form.Control placeholder="Nombre Integrante 2" value={nombre2} onChange={(e) => setNombre2(e.target.value)} />
                 </div>
                 <div className="col-md-6">
-                    <input type="text" className="form-control" placeholder="Rol en el equipo (Integrante 2)" value={rol2} onChange={(e) => setRol2(e.target.value)} />
+                    <Form.Control placeholder="Rol en el equipo (Integrante 2)" value={rol2} onChange={(e) => setRol2(e.target.value)} />
                 </div>
 
                 <div className="col-12 text-end mt-4">
-                    <button type="submit" className="btn btn-success px-5 fw-bold">Agregar Proyecto</button>
+                    <Button type="submit" className="btn btn-success px-5 fw-bold">Agregar Proyecto</Button>
                 </div>
-            </form>
-        </div>
+            </Form>
+            </Card.Body>
+        </Card>
     );
 };
 
 export default FormularioProyecto;
+
+
+
