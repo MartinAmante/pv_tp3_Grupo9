@@ -39,3 +39,24 @@ const ProyectoCard = ({ proyecto, eliminarProyecto }) => {
 };
 
 export default ProyectoCard;
+/*
+ ✅ Botón “Ver Detalle”
+
+    Dentro de:
+
+    ProyectoCard
+
+    Modificar:
+
+    “Ver detalle”
+
+    Para usar:
+
+    <Link to={/proyectos/${id}}>
+
+    Porque el TP lo pide explícitamente en:
+
+    “El botón ‘Ver Detalle’ de las tarjetas ahora debe cambiar para
+     utilizar los 
+     enlaces de React Router.”
+*/

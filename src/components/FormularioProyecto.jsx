@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from "react-bootstrap/Card";
 
 const FormularioProyecto = ({ onAgregarProyecto }) => {
-    const [titulo, setTitulo] = useState('');
+    const [titulo, setTitulo] = useState('');  
     const [categoria, setCategoria] = useState('');
     const [estado, setEstado] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -21,9 +21,10 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
     const [disponibilidad, setDisponibilidad] = useState(false);
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); {/*no renderices todavia*/}
 
         const listaRecursos = [];
+        {/*se ingreso algo en el campo recursos? */}
         if (recursoPdf) listaRecursos.push(`pdf: ${recursoPdf}`);
         if (recursoDrive) listaRecursos.push(`drive: ${recursoDrive}`);
         if (recursoGithub) listaRecursos.push(`github: ${recursoGithub}`);
@@ -36,7 +37,7 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
             listaEquipo.push({ nombre: nombre2, rol: rol2 || 'Desarrollador' });
         }
 
-        const nuevo = {
+        const nuevo = { //variables de los useState
             id: Date.now(),
             titulo,
             categoria,
@@ -139,32 +140,3 @@ export default FormularioProyecto;
 
 
 
-
-
-
-
-
-
-
-
-/*<div className="col-md-5">
-                    <input 
-                        type="text" 
-                        name="equipo" 
-                        className="form-control" 
-                        placeholder="Equipo" 
-                        value={equipo} 
-                        onChange={(e) => setDatos({...datos,  ...equipo,nombre: e.target.value})} 
-                        required />
-                </div>  
-                <div className="col-md-5">
-                    <input 
-                        type="text" 
-                        name="rol" 
-                        className="form-control" 
-                        placeholder="Rol" 
-                        value={rol} 
-                        onChange={(e) => setDatos({...datos, ...equipo, rol: e.target.value})} 
-                        required />
-                </div> 
-               */

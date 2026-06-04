@@ -11,10 +11,10 @@ const ListaProyectos = ({ proyectosState, onEliminarProyecto, setActividadReal, 
     const handleBuscar = (e) => {
         setBusqueda(e.target.value);
     };
-  
-    const proyectosFiltrados = busqueda.trim() === '' 
-        ? proyectosState 
-        : buscarProyecto(busqueda);
+                                       /*es lo mismo que un if*/   
+    const proyectosFiltrados = busqueda.trim() === ''  /*trim elimina los espacios en blanco de la cadena que reciba */
+        ? proyectosState /*SI busqueda='' pasalee esto*/                             /*busqueda = Hola Papu => holapapu*/
+        : buscarProyecto(busqueda); /*SINO pasale busqueda a la funcion*/
   
   
   useEffect(() => {
@@ -29,7 +29,8 @@ const ListaProyectos = ({ proyectosState, onEliminarProyecto, setActividadReal, 
 
     return (
         <div className="container mt-4">
-            <h2 className="mb-4 text-center">Listado de Proyectos</h2>
+            <h2 className="mb-4 text-center">Listado de Pr
+                oyectos</h2>
 
             <div className="mb-4">
                 <input 

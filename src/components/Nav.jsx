@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import "../assets/css/nav.css";
 
 function Nav() {
-    return (
+    return (    
         <nav className="navbar">
             <ul>
                 <li>
@@ -22,3 +22,8 @@ function Nav() {
 }
 
 export default Nav;
+/*
+    Refactorización del Menú (<Nav />)
+
+    “Reemplazar todas las etiquetas tradicionales <a> por <Link> o <NavLink>”
+*/
