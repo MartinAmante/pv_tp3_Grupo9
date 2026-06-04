@@ -97,3 +97,9 @@ export const buscarProyecto = (termino) => {
     const texto = termino.toLowerCase();
     return proyectos.filter(p => p.titulo.toLowerCase().includes(texto));
 };    
+
+export const obtenerProyectosPorId = (id) => {
+    return proyectos.find(
+        proyecto => proyecto.id === Number(id)
+    );
+};

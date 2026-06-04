@@ -11,6 +11,7 @@ import RegistroActividad from './components/RegistroActividad';
 import { Routes, Route, useParams } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import PerfilUsuario from './components/PerfilUsuario';
+import { obtenerProyectosPorId } from './services/proyectoService';
 
 function App() {
   const [proyectos, setProyectos] = useState(obtenerProyectoPorDisponible());
@@ -24,9 +25,8 @@ function App() {
 
     const { id } = useParams();
 
-    const proyecto = proyectos.find(
-      p => p.id === Number(id)
-    );
+    const proyecto = obtenerProyectosPorId(id);
+    
     return <DetalleProyecto proyecto={proyecto} />;
   };
 
