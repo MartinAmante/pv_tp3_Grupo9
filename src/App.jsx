@@ -25,8 +25,8 @@ function App() {
 
     const { id } = useParams();
 
-    const proyecto = obtenerProyectosPorId(id);
-    
+    const proyecto = obtenerProyectosPorId(Number(id));
+
     return <DetalleProyecto proyecto={proyecto} />;
   };
 
