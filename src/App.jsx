@@ -18,6 +18,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import PerfilUsuario from './components/PerfilUsuario';
 import './App.css';
+import { UsuarioProvider } from './context/UsuarioContext';
 
 function App() {
   const [proyectos, setProyectos] = useState(() => obtenerProyectoPorDisponible());
@@ -65,7 +66,8 @@ function App() {
   };
 
   return (
-    <div className="App d-flex flex-column min-vh-100">{/*“Creá un contenedor flex vertical que ocupe toda la altura de la pantalla*/}
+    <UsuarioProvider>
+      <div className="App d-flex flex-column min-vh-100">{/*“Creá un contenedor flex vertical que ocupe toda la altura de la pantalla*/}
       <Header />
       <Nav />
       <main className="container my-5 flex-grow-1">
@@ -116,7 +118,8 @@ function App() {
 
       </main>
       <Footer />
-    </div>
+      </div>
+    </UsuarioProvider>  
   );
 }
 
