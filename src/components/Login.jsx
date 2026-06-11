@@ -4,11 +4,16 @@ import { UsuarioContext } from '../context/UsuarioContext';
 const Login = () => {
 
     const [datosUsuario, setDatosUsuario] = useState({
-        
         nombre: '',
-        constraseña: ''
-
+        contraseña: ''
     });
+    
+    
+        const handleChange = (e) => {
+
+        
+        }
+
 
     return (
             <div className="card shadow-sm mb-3 border-primary " >   
@@ -27,7 +32,7 @@ const Login = () => {
                     <label>Contraseña: </label>
                     <input
                         type="password"
-                        name="password"
+                        name="contraseña"
                                         
                     />
                 
@@ -41,3 +46,7 @@ const Login = () => {
 };
 
 export default Login;
+
+/* 
+    le gusta el ketchup
+*/
