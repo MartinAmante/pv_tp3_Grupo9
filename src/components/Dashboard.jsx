@@ -10,7 +10,7 @@ const Dashboard = () => {
 
             <br/>  
 
-            <Login />
+        <Login />
 
             <br/>
 
