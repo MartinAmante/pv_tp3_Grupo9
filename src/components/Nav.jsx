@@ -23,7 +23,7 @@ function Nav() {
 
 export default Nav;
 /*
-    Refactorización del Menú (<Nav />)
+  
 
-    “Reemplazar todas las etiquetas tradicionales <a> por <Link> o <NavLink>”
 */
+

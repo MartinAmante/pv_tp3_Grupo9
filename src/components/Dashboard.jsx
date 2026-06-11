@@ -1,13 +1,7 @@
+import Login from "./Login";
+
 const Dashboard = () => {
     return (
-<<<<<<< HEAD
-        <div>
-            <h2>Dashboard</h2>
-            <p>Bienvenido al sistema de gestión de proyectos.</p>
-            <p>En esta pagina se le brindara la capasidad de cargar proyectos en nuestra plataforma </p>
-            <br/>  
-            <div className="card shadow-sm mb-3 border-primary">   
-=======
         <div className="container-fluid">
             {/* Título y textos principales con tipografía de Bootstrap */}
             <h2 className="display-6 fw-bold mb-3">Dashboard</h2>
@@ -16,9 +10,12 @@ const Dashboard = () => {
 
             <br/>  
 
+            <Login />
+
+            <br/>
+
             {/* Tarjeta de métricas que armó tu compañero con estilos mejorados */}
-            <div className="card shadow-sm mb-3 border-primary" style={{ maxWidth: "500px" }}>   
->>>>>>> 57fffe6764a3883667868cd08a984191ea9f8784
+            <div className="card shadow-sm mb-3 border-primary " >   
                 <div className="card-body">
                     <h3 className="card-title text-primary h4 fw-bold mb-3">Métricas Generales</h3>
                     

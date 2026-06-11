@@ -1,13 +1,6 @@
 const PerfilUsuario = () => {
 
     return (
-<<<<<<< HEAD
-        <div className="card shadow-sm mb-3 border-primary p-4">
-            <h2>Perfil de Profesor </h2>
-            <p>Nombre: Gustvo Sosa </p>
-            <p>Rol: Profesor</p>
-            <p>Institución: Facultad de Ingeniería</p>
-=======
         <div className="container d-flex justify-content-center">
             {/* Mantenemos la tarjeta de tu compañero pero centrada y con un ancho máximo */}
             <div className="card shadow-lg p-3 mb-5 bg-body-tertiary rounded border-primary" style={{ maxWidth: "500px", width: "100%" }}>
@@ -32,18 +25,8 @@ const PerfilUsuario = () => {
                     </ul>
                 </div>
             </div>
->>>>>>> 57fffe6764a3883667868cd08a984191ea9f8784
         </div>
     );
 };
 
 export default PerfilUsuario;
-
-<<<<<<< HEAD
-=======
-/*
-  2. <PerfilUsuario /> (src/views/PerfilUsuario.jsx): Pantalla del perfil del usuario 
-  (/perfil). Debe simular los datos del alumno o docente (Nombre, Rol, Institución) 
-  organizados elegantemente dentro de un componente Paper o una lista .
-*/
->>>>>>> 57fffe6764a3883667868cd08a984191ea9f8784
