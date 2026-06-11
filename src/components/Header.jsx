@@ -1,12 +1,18 @@
+import { useContext } from "react";
+import { UsuarioContext } from "../context/UsuarioContext";
+
 export const Header = () => {
+
+    const {usuario} = useContext(UsuarioContext);
+
     return (
-    <div className="comp header">
         <header className= "header">
-        <title>Grup 9</title>
-        <link rel="#"href="#" rel="#"/>
-        <link href="#" rel="#"/>
+        <h2>Grup 9</h2>
+        
+        <div>
+            {usuario.nombre} | {usuario.rol}
+        </div>
         </header>
-    </div>
     );
 };
 
