@@ -137,9 +137,3 @@ const PerfilUsuario = () => {
 };
 
 export default PerfilUsuario;
-
-/*
-  2. <PerfilUsuario /> (src/views/PerfilUsuario.jsx): Pantalla del perfil del usuario 
-  (/perfil). Debe simular los datos del alumno o docente (Nombre, Rol, Institución) 
-  organizados elegantemente dentro de un componente Paper o una lista .
-*/

@@ -8,14 +8,18 @@ export const UsuarioProvider = ({ children }) => {
         nombre: 'Tomas Vilte',
         dni: '12345678',
         rol: 'Alumno',
-        institucion: 'Facultad de Ingeniería'
-    });
+        institucion: 'Facultad de Ingeniería',
+        contraseña: '123457'
+    }
 
-   const actualizarPerfil = (nuevosDatos) => {
+    );
+
+   const actualizarPerfil = (nuevosDatos) => { //juan
     setUsuario({
-        ...usuario,
-        ...nuevosDatos
-    });
+        ...usuario, //todo el onjeto usuario
+        ...nuevosDatos // juan
+    }); // al desestructurar todo y repetirse el campo "nombre" react se queda con la ultima desestructuracion
+        // como solo se repite nombre, solo cambia eso. lo mmismo si fueran otros datos
 };
 
     return (

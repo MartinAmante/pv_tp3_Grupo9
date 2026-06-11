@@ -124,32 +124,3 @@ function App() {
 }
 
 export default App;
-/*
-    sección 1: React Router
-    
-
-    ✅ Botón “Ver Detalle”
-
-    Dentro de:
-
-    ProyectoCard
-
-    Modificar:
-
-    “Ver detalle”
-
-    Para usar:
-
-    <Link to={/proyectos/${id}}>
-
-    Porque el TP lo pide explícitamente en:
-
-    “El botón ‘Ver Detalle’ de las tarjetas ahora debe cambiar para utilizar los enlaces de React Router.”
-
-    Además debería encargarse de:
-    navegación SPA
-    
-    menú visual
-    active links
-    responsive navbar (si quieren sumar puntos)
-*/

@@ -83,7 +83,11 @@ const FormularioProyecto = ({ onAgregarProyecto }) => {
                 </div>
 
                 <div className="col-12">
-                    <Form.Control as="textarea" rows={3} placeholder="Descripción del proyecto" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required />
+                    <Form.Control as="textarea"
+                     rows={3}
+                      placeholder="Descripción del proyecto" 
+                      value={descripcion} 
+                      onChange={(e) => setDescripcion(e.target.value)} required />
                 </div>
                 
                 <div className="col-12">

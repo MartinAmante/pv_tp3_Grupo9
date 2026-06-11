@@ -1,3 +1,5 @@
+import Login from "./Login";
+
 const Dashboard = () => {
     return (
         <div className="container-fluid">
@@ -8,8 +10,12 @@ const Dashboard = () => {
 
             <br/>  
 
+            <Login />
+
+            <br/>
+
             {/* Tarjeta de métricas que armó tu compañero con estilos mejorados */}
-            <div className="card shadow-sm mb-3 border-primary" style={{ maxWidth: "500px" }}>   
+            <div className="card shadow-sm mb-3 border-primary " >   
                 <div className="card-body">
                     <h3 className="card-title text-primary h4 fw-bold mb-3">Métricas Generales</h3>
                     
@@ -30,7 +36,6 @@ const Dashboard = () => {
                     </ul>
                 </div>
             </div>
-
             <br/>  
         </div>
     );
