@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useContext } from 'react';
 import { UsuarioContext } from '../context/UsuarioContext';
 
@@ -28,8 +29,23 @@ export const Header = () => {
             <link href="#" rel="#"/>
 
 
+=======
+import { useContext } from "react";
+import { UsuarioContext } from "../context/UsuarioContext";
+
+export const Header = () => {
+
+    const {usuario} = useContext(UsuarioContext);
+
+    return (
+        <header className= "header">
+        <h2>Grup 9</h2>
+        
+        <div>
+            {usuario.nombre} | {usuario.rol}
+        </div>
+>>>>>>> 5654d7e678bfdf7eb96d0394d0f6a8a5e295fd29
         </header>
-    </div>
     );
 };
 
