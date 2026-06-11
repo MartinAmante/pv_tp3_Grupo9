@@ -8,6 +8,14 @@ const PerfilUsuario = () => {
     const [formValues, setFormValues] = useState({ ...usuario });
 
     useEffect(() => {
+        console.log("MONTA PERFIL");
+
+        return () => {
+            console.log("DESMONTA PERFIL");
+        };
+    }, []);
+
+    useEffect(() => {
         setFormValues({ ...usuario });
     }, [usuario]);
 
@@ -20,11 +28,13 @@ const PerfilUsuario = () => {
     };
 
     const handleSubmit = (e) => {
+        console.log("HANDLE SUBMIT");
         e.preventDefault();
         actualizarPerfil(formValues);
         setEditando(false);
     };
-
+    console.log("editando =", editando);
+    console.log("RENDER", editando);
     return (
         <div className="container d-flex justify-content-center mt-4">
             {/* Mantenemos la tarjeta de tu compañero pero centrada y con un ancho máximo */}
@@ -32,6 +42,10 @@ const PerfilUsuario = () => {
                 <div className="card-body">
                     {/* Título estilizado con tipografía Bootstrap */}
                     <h2 className="card-title h4 fw-bold mb-4 text-primary">Perfil de Profesor</h2>
+                    
+                    
+                    <p>modo edición: {String(editando)}</p>
+                    
                     
                     <form onSubmit={handleSubmit}>
                         {/* Transformamos los párrafos en una lista limpia y elegante */}
@@ -123,7 +137,13 @@ const PerfilUsuario = () => {
                                 <button 
                                     type="button" 
                                     className="btn btn-primary px-4 shadow-sm" 
-                                    onClick={() => setEditando(true)}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        
+                                        console.log("CLICK EDITAR");
+                                        console.log("ANTES", editando);
+                                        setEditando(true);
+                                    }}
                                 >
                                     Editar Perfil
                                 </button>

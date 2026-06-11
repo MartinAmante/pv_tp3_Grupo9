@@ -2,10 +2,11 @@ import React, { useContext,useState } from 'react';
 import { UsuarioContext } from '../context/UsuarioContext';
 
 const Login = () => {
+const [guardar, setGuardar] = useState({ });
 
-   export const guardado = () => {
+/*   export const guardado = () => {
     const [guardar, setGuardar] = useState({ });
-}
+}*/
 
     const [nombre, setNombre] = useState('');
     const [contraseña, setContraseña] = useState('');
