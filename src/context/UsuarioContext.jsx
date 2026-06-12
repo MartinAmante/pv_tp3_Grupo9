@@ -14,6 +14,7 @@ export const UsuarioProvider = ({ children }) => {
 
     );
 
+   const [guardarUsuario , setGuardarUsuario] = useState({})
    const actualizarPerfil = (nuevosDatos) => { //juan
     setUsuario({
         ...usuario, //todo el onjeto usuario
@@ -26,7 +27,9 @@ export const UsuarioProvider = ({ children }) => {
         <UsuarioContext.Provider
             value={{
                 usuario,
-                actualizarPerfil
+                actualizarPerfil,
+                guardarUsuario,
+                setGuardarUsuario
             }}
         >
             {children}
